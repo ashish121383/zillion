@@ -120,15 +120,30 @@ add_action( 'widgets_init', 'zillionaplite_widgets_init' );
  * Enqueue scripts and styles.
  */
 function zillionaplite_scripts() {
-	wp_enqueue_style( 'zillionaplite-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'zillionaplite-bootstrap', get_template_directory_uri().'/css/bootstrap.min.css');
 
-	wp_enqueue_script( 'zillionaplite-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_style( 'zillionaplite-flexslider', get_template_directory_uri().'/css/flexslider.css');
 
-	wp_enqueue_script( 'zillionaplite-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_style( 'zillionaplite-animate', get_template_directory_uri().'/css/animate.css');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_enqueue_style( 'zillionaplite-font-awesome', 'https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css');
+
+	wp_enqueue_style( 'zillionaplite-google-fonts', 'https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,600,600i,700,700i,800&display=swap');
+
+	wp_enqueue_style( 'zillionaplite-style', get_template_directory_uri().'/css/style.css');
+
+	wp_enqueue_style( 'zillionaplite-responsive', get_template_directory_uri().'/css/responsive.css');
+	//wp_enqueue_style( 'zillionaplite-style', get_stylesheet_uri() );
+	
+
+	wp_enqueue_script( 'zillionaplite-jquery-js', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), '3.4.1', true );
+
+	wp_enqueue_script( 'zillionaplite-bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array(), '3.3.7', true );
+
+	wp_enqueue_script( 'zillionaplite-flexslider-js', 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.min.js', array(), '2.7.2', true );
+
+	wp_enqueue_script( 'zillionaplite-main-js', get_template_directory_uri() . '/js/main.js', array(), '1.1.0', true );
+
 }
 add_action( 'wp_enqueue_scripts', 'zillionaplite_scripts' );
 
