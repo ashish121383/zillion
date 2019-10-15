@@ -36,29 +36,21 @@
           <span></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav justify-content-center mx-auto nav-zillion">
-            <li class="nav-item">
-              <a class="nav-link" href="experties.html">What we do <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about-us.html">Who are we</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="insights.html">Insights</a>
-            </li>
-               <li class="nav-item">
-              <a class="nav-link" href="our-people.html">Our People</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="event.html">Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="join.html">Join us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Get In Touch</a>
-            </li>
-          </ul>
+          <?php 
+              wp_nav_menu(
+                 array(
+                  'theme_location' => 'header-menu',
+                  'menu'  => ' ',
+                  'menu_class' => 'navbar-nav justify-content-center mx-auto nav-zillion',
+                  'menu_id' => 'custom-header-menu',
+                  'container' => '',
+                  'container_class' => '',
+                  'walker'          => new Description_Walker
+                 ) 
+              );
+          
+          ?>
+          
           <div class="header-right-wrap mt-50">
             <ul>
               <li>
