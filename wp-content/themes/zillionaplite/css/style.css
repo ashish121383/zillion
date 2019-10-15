@@ -1507,3 +1507,32 @@ Written by Ashish 15102019
 .copyright-section a {
     color: #A5A5A5;
 }
+
+.es_required_field.es_txt_email {
+    padding: 10px 10px;
+    width: 328px;
+    border: 1px solid #A5A5A5;
+    font-weight: 600;
+    font-size: 12px;
+    text-shadow: 0 0 black;
+    background-color: transparent;
+    color: #A5A5A5 ;
+	outline: none;
+	display: inline-block ;
+}
+
+.es_subscription_form_submit {
+    background: #FDA92D 0% 0% no-repeat padding-box ;
+    display: inline-block;
+    padding: 9px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+	width:100%;
+}
+
+span#spinner-image {
+    display: none;
+}
+    

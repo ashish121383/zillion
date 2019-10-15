@@ -39,8 +39,9 @@
                 <div class="newslater">
                   <span>SUBSCRIBE TO OUR LATEST INSIGHTS</span>
                   <div>
-                    <input type="text" name="search" placeholder="Email Address">
-                    <a><img src="img/left-arrow.svg"></a>
+				  	<?php echo do_shortcode('[email-subscribers-form id="1"]'); ?>
+                    <!-- <input type="text" name="search" placeholder="Email Address">
+                    <a><img src="img/left-arrow.svg"></a> -->
                   </div>
                 </div>
 				<?php echo preg_replace( '/<div class="textwidget">(.*?)<\/div>/' , '$1' , get_dynamic_sidebar('social-sharing') );
