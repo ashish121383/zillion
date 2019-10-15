@@ -10,26 +10,56 @@
  */
 
 ?>
-
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'zillionaplite' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'zillionaplite' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'zillionaplite' ), 'zillionaplite', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
+	<footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="footer-logo">
+                <img src="img/footer-logo.png" alt="Zillion">
+              </div>
+              <ul class="footer-menu">
+                <li><a href="#">What we do</a></li>
+                <li><a href="#">Who are we</a></li>
+                <li><a href="#">Insights</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Join us</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <div class="footer-left">
+                <div class="newslater">
+                  <span>SUBSCRIBE TO OUR LATEST INSIGHTS</span>
+                  <div>
+                    <input type="text" name="search" placeholder="Email Address">
+                    <a><img src="img/left-arrow.svg"></a>
+                  </div>
+                </div>
+                <div class="social">
+                  <ul>
+                    <li><a href="#"><img src="img/facebook-logo.svg" alt="facebook"></a></li>
+                    <li><a href="#"><img src="img/linkedin.svg" alt="facebook"></a></li>
+                    <li><a href="#"><img src="img/instagram.svg" alt="facebook"></a></li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row copyright">
+            <div class="col-lg-7"> <div class="copyright-section">
+              <ul><li><a>Privacy Policy</a></li>
+                <li><a>Terms</a></li>
+                <li><a>Cookie policy</a></li></ul>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="copy-right">
+                <span>© 2019, Zillion Consulting Group | All Rights Reserved.</span>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </footer>
 <?php wp_footer(); ?>
 
 </body>

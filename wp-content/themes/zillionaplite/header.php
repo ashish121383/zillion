@@ -62,5 +62,4 @@
       </nav>
 	</header>
 	
-<div id="page" class="site">
-	<div id="content" class="site-content">
+
