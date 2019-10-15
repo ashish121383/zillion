@@ -375,7 +375,6 @@ abstract class ES_DB {
 		}
 	}
 
-
 	public static function do_insert( $table_name, $fields, $place_holders, $values ) {
 		global $wpdb;
 
@@ -392,6 +391,35 @@ abstract class ES_DB {
 		}
 	}
 
+	/**
+	 * Get ID, Name Map
+	 *
+	 * @param string $where
+	 *
+	 * @return array
+	 *
+	 * @since 4.2.2
+	 */
+	public function get_id_name_map($where = '') {
+		global $wpdb;
+
+		$query = "SELECT $this->primary_key, name FROM $this->table_name";
+
+		if(!empty($where)) {
+			$query .= " WHERE $where";
+		}
+
+		$results = $wpdb->get_results( $query, ARRAY_A );
+
+		$id_name_map = array();
+		if ( count( $results ) > 0 ) {
+			foreach ( $results as $result ) {
+				$id_name_map[ $result['id'] ] = $result['name'];
+			}
+		}
+
+		return $id_name_map;
+	}
 
 	public static function prepare_data( $data, $column_formats, $column_defaults, $insert = true ) {
 

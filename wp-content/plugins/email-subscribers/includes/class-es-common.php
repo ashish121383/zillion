@@ -170,7 +170,10 @@ Class ES_Common {
 
 	public static function prepare_form_dropdown_options( $selected = '', $default_label = 'Select Form' ) {
 
-		$lists = ES_DB_Forms::get_forms_id_name_map();
+		$where = "(deleted_at IS NULL OR deleted_at = '0000-00-00 00:00:00')";
+
+		$lists = ES()->forms_db->get_id_name_map($where);
+
 		if ( ! is_null( $default_label ) ) {
 			$default_option[0] = __( $default_label, 'email-subscribers' );
 			$lists             = $default_option + $lists;
@@ -749,7 +752,7 @@ Class ES_Common {
 
 						$prepared_form_data = ES_Forms_Table::prepare_form_data( $data );
 
-						$inserted_form_id = ES_DB_Forms::add_form( $prepared_form_data );
+						$inserted_form_id = ES()->forms_db->add_form( $prepared_form_data );
 
 						$data_to_set = array(
 							'title'   => $title,
@@ -795,7 +798,7 @@ Class ES_Common {
 
 						$prepared_form_data = ES_Forms_Table::prepare_form_data( $data );
 
-						$inserted_form_id = ES_DB_Forms::add_form( $prepared_form_data );
+						$inserted_form_id = ES()->forms_db->add_form( $prepared_form_data );
 
 						$data_to_set = array(
 							'title'   => $title,

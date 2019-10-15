@@ -48,6 +48,8 @@ if ( class_exists( 'ES_DB_Links' ) ) {
 		public function __construct() {
 			global $wpdb;
 
+			parent::__construct();
+
 			$this->table_name = $wpdb->prefix . 'ig_links';
 
 			$this->version = '1.0';

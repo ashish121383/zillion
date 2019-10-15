@@ -5,7 +5,7 @@ Author URI: https://www.icegram.com/
 Tags: subscription, newsletter, email marketing, post notification, email newsletter form, email signup, email widget, newsletter signup, subscribe, subscription form, bulk emails, signup form, list builder, lead generation, welcome email, contacts
 Requires at least: 3.9
 Tested up to: 5.2.3
-Stable tag: 4.2.1
+Stable tag: 4.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -299,6 +299,11 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 9. Admin page - Settings Tab 4 - Security Settings
 
 == Changelog ==
+
+= 4.2.2 (14.10.2019) =
+* New: Added configuration option for label & placeholder for subscription form
+* Update: Ask subscribers for confirmation before unsubscription
+* Fix: Unsubscription issue
 
 = 4.2.1 (10.10.2019) =
 * Update: Added per page screen option for Contacts, Forms, Lists & Campaigns

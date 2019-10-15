@@ -199,7 +199,7 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 
 			if ( $campaign_id ) {
 				$campaign  = ES()->campaigns_db->get_campaign_by_id( $campaign_id );
-				$campaigns = array( $campaign );
+				$campaigns  = array($campaign);
 			} else {
 				$campaigns = ES()->campaigns_db->get_active_campaigns( IG_CAMPAIGN_TYPE_SEQUENCE_MESSAGE );
 			}

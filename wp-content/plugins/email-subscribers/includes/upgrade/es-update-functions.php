@@ -509,7 +509,7 @@ function ig_es_update_400_migrate_reports_data() {
 }
 
 function ig_es_update_400_migrate_group_selectors_forms() {
-	ES_DB_Forms::migrate_advanced_forms();
+	ES()->forms_db->migrate_advanced_forms();
 }
 
 function ig_es_update_400_db_version() {
@@ -533,7 +533,7 @@ function ig_es_update_401_db_version() {
  * Change es_template_type from "Post Notification" to "post_notification"
  */
 function ig_es_update_402_migrate_post_notification_es_template_type() {
-	ES_DB_Notifications::migratate_post_notification_es_template_type();
+	ES_DB_Notifications::migrate_post_notification_es_template_type();
 }
 
 function ig_es_update_402_db_version() {

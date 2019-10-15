@@ -174,7 +174,7 @@ class ES_DB_Contacts {
 
 		$contacts_table = IG_CONTACTS_TABLE;
 
-		$ids_str = "'" . implode( ", '", $ids ) . "'";
+		$ids_str = implode( ", '", $ids );
 
 		$query       = "SELECT * FROM $contacts_table WHERE id IN ($ids_str)";
 		$subscribers = $wpdb->get_results( $query, ARRAY_A );

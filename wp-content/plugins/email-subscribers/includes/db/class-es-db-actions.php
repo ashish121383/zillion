@@ -72,8 +72,4 @@ class ES_DB_Actions extends ES_DB {
 			'deleted_at' => null
 		);
 	}
-
-
-
-
 }

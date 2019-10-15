@@ -1314,7 +1314,7 @@ class ES_Install {
 		$form_data['updated_at'] = null;
 		$form_data['deleted_at'] = null;
 		$form_data['af_id']      = 0;
-		$form_id                 = ES_DB_Forms::add_form( $form_data );
+		$form_id                 = ES()->forms_db->add_form( $form_data );
 	}
 
 	/**

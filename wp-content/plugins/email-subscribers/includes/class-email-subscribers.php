@@ -159,6 +159,13 @@ class Email_Subscribers {
 	public $contacts_db;
 
 	/**
+	 * @since 4.2.2
+	 *
+	 * @var object|ES_DB_Blocked_Emails
+	 */
+	public $blocked_emails_db;
+
+	/**
 	 *
 	 * @since 4.2.1
 	 *
@@ -258,11 +265,11 @@ class Email_Subscribers {
 			$es_pro_plugin_version   = $es_pro_plugin_meta_data['Version'];
 
 			if ( is_admin() && ! empty( $es_pro_plugin_version ) && version_compare( $es_pro_plugin_version, '4.2.1', '<' ) ) {
-				$upgrade_url = admin_url('plugins.php?plugin_status=upgrade');
+				$upgrade_url = admin_url( 'plugins.php?plugin_status=upgrade' );
 				ob_start();
 				?>
                 <div class="notice notice-error">
-                    <p><?php echo sprintf( __( '<strong>Email Subscribers</strong> plugin is activated but it won\'t work because it needs <strong>Email Subscribers Premium</strong> plugin to be updated. Please <a href="%s" target="_blank">update</a> plugin first.', 'email-subscribers-premium' ), $upgrade_url); ?></p>
+                    <p><?php echo sprintf( __( '<strong>Email Subscribers</strong> plugin is activated but it won\'t work because it needs <strong>Email Subscribers Premium</strong> plugin to be updated. Please <a href="%s" target="_blank">update</a> plugin first.', 'email-subscribers-premium' ), $upgrade_url ); ?></p>
                 </div>
 				<?php
 				return;
@@ -318,10 +325,6 @@ class Email_Subscribers {
 		}
 		$es_premium  = 'email-subscribers-premium/email-subscribers-premium.php';
 		$all_plugins = $ig_es_tracker::get_plugins();
-		//get pro button
-		// if ( ! in_array( $es_premium, $all_plugins ) && is_admin() && ! in_array( $screen_id, array( 'toplevel_page_es_dashboard' ), true ) ) {
-		// 	echo "<div class='notice es-floting-button'><i class='dashicons dashicons-es dashicons-awards'></i> <a href='https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=get_starter_floating_button&utm_campaign=es_upsale' target='_blank'>" . __( 'Get Starter Now!', 'email-subscribers' ) . "</a></div>";
-		// }
 		//cron notice
 		$notice_option = get_option( 'ig_es_wp_cron_notice' );
 
@@ -347,6 +350,16 @@ class Email_Subscribers {
 			echo '<div class="notice notice-warning" style="background-color: #FFF;"><p style="letter-spacing: 0.6px;">' . $sequence_notice . '<a style="float:right" class="es-admin-btn es-admin-btn-secondary " href="' . admin_url() . '?es_dismiss_admin_notice=1&option_name=sequence_release_notice_dismiss">' . __( 'OK, I Got it!',
 					'email-subscribers' ) . '</a></p></div>';
 		}
+
+		//pre-halloween 2019 :start
+        $timezone_format = _x('Y-m-d', 'timezone date format');
+        $ig_current_date = strtotime(date_i18n($timezone_format));
+        $ig_es_offer_start = strtotime("2019-10-15");
+        $ig_es_offer_end = strtotime("2019-10-17");
+        if(($ig_current_date >= $ig_es_offer_start) && ($ig_current_date <= $ig_es_offer_end)) {
+            include_once( EMAIL_SUBSCRIBERS_DIR.'/ig-es-offer.php');
+        }
+        //pre-halloween 2019 :end
 
 
 	}
@@ -375,7 +388,10 @@ class Email_Subscribers {
 			if ( $option_name === 'redirect_upsale_notice' ) {
 				header( "Location: https://www.icegram.com/email-subscribers-starter-plan-pricing/?utm_source=es&utm_medium=es_upsale_banner&utm_campaign=es_upsale" );
 				exit();
-			} else {
+			} if($option_name === 'offer_pre_halloween_done_2019'){
+                header("Location: https://www.icegram.com/?utm_source=in_app&utm_medium=es_banner&utm_campaign=pre-halloween-2019");
+                exit();
+            }else {
 				$referer = wp_get_referer();
 				wp_safe_redirect( $referer );
 			}
@@ -748,6 +764,7 @@ class Email_Subscribers {
 		$this->loader->add_action( 'init', $plugin_public, 'es_email_subscribe_init' );
 		$this->loader->add_action( 'wp_loaded', $plugin_public, 'es_email_subscribe_wp_loaded' );
 		$this->loader->add_action( 'ig_es_add_contact', $plugin_public, 'add_contact', 10, 2 );
+		$this->loader->add_action( 'ig_es_confirm_unsubscription', $plugin_public, 'confirm_unsubscription', 10, 2 );
 
 	}
 
@@ -857,16 +874,17 @@ class Email_Subscribers {
 			add_action( 'widgets_init', array( self::$instance, 'register_es_widget' ) );
 			add_filter( 'cron_schedules', array( self::$instance, 'es_add_cron_interval' ) );
 
-			self::$instance->queue_db     = new ES_DB_Queue();
-			self::$instance->actions_db   = new ES_DB_Actions();
-			self::$instance->campaigns_db = new ES_DB_Campaigns();
-			self::$instance->lists_db     = new ES_DB_Lists();
-			self::$instance->forms_db     = new ES_DB_Forms();
-			self::$instance->contacts_db  = new ES_DB_Contacts();
-			self::$instance->queue        = new ES_Queue();
-			self::$instance->actions      = new ES_Actions();
+			self::$instance->queue_db          = new ES_DB_Queue();
+			self::$instance->actions_db        = new ES_DB_Actions();
+			self::$instance->campaigns_db      = new ES_DB_Campaigns();
+			self::$instance->lists_db          = new ES_DB_Lists();
+			self::$instance->forms_db          = new ES_DB_Forms();
+			self::$instance->contacts_db       = new ES_DB_Contacts();
+			self::$instance->blocked_emails_db = new ES_DB_Blocked_Emails();
+			self::$instance->queue             = new ES_Queue();
+			self::$instance->actions           = new ES_Actions();
 
-			self::$instance->logger       = get_ig_logger();
+			self::$instance->logger = get_ig_logger();
 
 			$ig_es_tracker = 'IG_Tracker_V_' . str_replace( '.', '_', IG_ES_FEEDBACK_VERSION );
 			if ( is_admin() ) {

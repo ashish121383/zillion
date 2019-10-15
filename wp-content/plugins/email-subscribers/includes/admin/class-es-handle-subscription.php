@@ -151,7 +151,7 @@ class ES_Handle_Subscription {
 
 				if ( $contact_id ) {
 
-					error_log('Firing ig_es_contact_subscribe');
+					error_log( 'Firing ig_es_contact_subscribe' );
 					do_action( 'ig_es_contact_subscribe', $contact_id, $this->list_ids );
 
 					$this->db_id = $contact_id;
@@ -318,10 +318,12 @@ class ES_Handle_Subscription {
 
 		// Store it blocked emails
 		if ( $is_domain_blocked ) {
-			$subscriber_ip = ig_es_get_ip();
-			$data['email'] = $email;
-			$data['ip']    = $subscriber_ip;
-			ES_DB_Blocked_Emails::insert( $data );
+			$data = array(
+				'email' => $email,
+				'ip'    => ig_es_get_ip()
+			);
+
+			ES()->blocked_emails_db->insert( $data );
 
 			$es_response['status']  = 'ERROR';
 			$es_response['message'] = 'es_email_address_blocked';
