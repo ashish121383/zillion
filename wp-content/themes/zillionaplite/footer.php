@@ -43,12 +43,8 @@
                     <a><img src="img/left-arrow.svg"></a>
                   </div>
                 </div>
-                <div class="social">
-                  <ul>
-                    <li><a href="#"><img src="img/facebook-logo.svg" alt="facebook"></a></li>
-                    <li><a href="#"><img src="img/linkedin.svg" alt="facebook"></a></li>
-                    <li><a href="#"><img src="img/instagram.svg" alt="facebook"></a></li></ul>
-                </div>
+				<?php echo preg_replace( '/<div class="textwidget">(.*?)<\/div>/' , '$1' , get_dynamic_sidebar('social-sharing') );
+ 			 ?>
               </div>
             </div>
           </div>

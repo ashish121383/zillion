@@ -127,6 +127,18 @@ function zillionaplite_widgets_init() {
 		'after_title'   => ' ',
 		) 
 	);
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Social Sharing', 'zillionaplite' ),
+		'id'            => 'social-sharing',
+		'description'   => esc_html__( 'Add social sharing', 'zillionaplite' ),
+		'before_widget' => '<div class="social">',
+		'after_widget'  => '</div>',
+		'before_title'  => ' ',
+		'after_title'   => ' ',
+		) 
+	);
+
 }
 add_action( 'widgets_init', 'zillionaplite_widgets_init' );
 
