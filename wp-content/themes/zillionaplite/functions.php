@@ -63,7 +63,7 @@ if ( ! function_exists( 'zillionaplite_setup' ) ) :
 
 		// Set up the WordPress core custom background feature.
 		add_theme_support( 'custom-background', apply_filters( 'zillionaplite_custom_background_args', array(
-			'default-color' => 'ffffff',
+			'default-color' => 'A5A5A5',
 			'default-image' => '',
 		) ) );
 
