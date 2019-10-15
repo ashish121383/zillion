@@ -15,16 +15,24 @@
           <div class="row">
             <div class="col-lg-8">
               <div class="footer-logo">
-                <img src="img/footer-logo.png" alt="Zillion">
+				<a href="<?php echo home_url(); ?>">
+					<img src="<?php echo home_url('/wp-content/uploads/2019/10/footer-logo.png'); ?>" alt="Zillion">
+				</a>
               </div>
-              <ul class="footer-menu">
-                <li><a href="#">What we do</a></li>
-                <li><a href="#">Who are we</a></li>
-                <li><a href="#">Insights</a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Join us</a></li>
-                <li><a href="#">Contact us</a></li>
-              </ul>
+
+			  <?php 
+			 	wp_nav_menu(
+					array(
+						'theme_location' => 'footer-menu',
+						'menu' => '',
+						'menu_class' => 'footer-menu',
+						'menu_id' => 'custom-footer',
+						'container' => '',
+						'container_class' => '',
+						'container_id' => ''
+					)
+				 ); 
+			  ?>
             </div>
             <div class="col-lg-4">
               <div class="footer-left">
@@ -46,21 +54,19 @@
           </div>
           <hr>
           <div class="row copyright">
-            <div class="col-lg-7"> <div class="copyright-section">
-              <ul><li><a>Privacy Policy</a></li>
-                <li><a>Terms</a></li>
-                <li><a>Cookie policy</a></li></ul>
-              </div>
+            <div class="col-lg-7"> 
+			
+			  <?php echo preg_replace( '/<div class="textwidget">(.*?)<\/div>/' , '$1' , get_dynamic_sidebar('copywrite-1') );
+ 			 ?>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5">			
               <div class="copy-right">
-                <span>© 2019, Zillion Consulting Group | All Rights Reserved.</span>
+                <span>© <?php echo date("Y"); ?>, Zillion Consulting Group | All Rights Reserved.</span>
               </div>
             </div>
           </div>
         </div> 
       </footer>
 <?php wp_footer(); ?>
-
 </body>
 </html>

@@ -20,9 +20,13 @@
             $('#nav-icon1').click(function() {
                 $(this).toggleClass('open');
             });
+
+            $('.flexslider').flexslider({
+                animation: "slide",
+                slideshow: true
+              });
+
+            $('.textwidget').contents().unwrap();  
    });
-    
-
-
- 
+     
 })(jQuery);

@@ -1500,3 +1500,10 @@ transform: rotateY(0deg); */
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
+/*
+Written by Ashish 15102019
+*/
+.copyright-section a {
+    color: #A5A5A5;
+}

@@ -114,9 +114,29 @@ function zillionaplite_widgets_init() {
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );
+	)
+);
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Copywrite Menu ', 'zillionaplite' ),
+		'id'            => 'copywrite-1',
+		'description'   => esc_html__( 'Add Copywrite Menu', 'zillionaplite' ),
+		'before_widget' => '<div class="copyright-section">',
+		'after_widget'  => '</div>',
+		'before_title'  => ' ',
+		'after_title'   => ' ',
+		) 
+	);
 }
 add_action( 'widgets_init', 'zillionaplite_widgets_init' );
+
+function get_dynamic_sidebar($i = 1) {
+	$c = '';
+	ob_start();
+	dynamic_sidebar($i);
+	$c = ob_get_clean();
+	return $c;
+ }
 
 /**
  * Enqueue scripts and styles.
