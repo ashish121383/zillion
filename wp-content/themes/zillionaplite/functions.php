@@ -226,3 +226,9 @@ remove_filter( 'the_excerpt', 'wpautop' );
 //Creating Custom Post Type
 
 require get_template_directory() . '/inc/post-type/services-post.php';
+
+// Create expertise shortcode for making custom what we do section 
+
+require get_template_directory() . '/inc/shortcode/custom-expertise.php';
+
+
