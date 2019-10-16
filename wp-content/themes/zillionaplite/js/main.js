@@ -23,7 +23,9 @@
 
             $('.flexslider').flexslider({
                 animation: "slide",
-                slideshow: true
+                slideshow: true,
+                speed:slow
+
               });
 
             $('.textwidget').contents().unwrap();  

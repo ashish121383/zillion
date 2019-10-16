@@ -214,3 +214,15 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/*
+	Removed Default p tag
+*/
+
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
+
+
+//Creating Custom Post Type
+
+require get_template_directory() . '/inc/post-type/services-post.php';
