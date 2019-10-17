@@ -43,7 +43,7 @@ if(have_posts()):
                 $about_section_title = get_sub_field('section_heading');
                 $about_section_content = get_sub_field('section_description');
           ?>
-          <li>
+          <li class="about-list">
             <div class="about-L lr">
               <img class="img-fluid" src="<?php echo $about_section_image['url']; ?>" alt="<?php echo $about_section_image['alt']; ?>">
             </div>

@@ -22,7 +22,7 @@
 
           <div class="col-md-6 col-lg-4 pb-3 pt-3">
            <div class="innerspace">
-              <div class="info-card <?php echo ($i == 1) ? 'active' : ''; ?>">
+              <div class="info-card <?php echo ($i == 1) ? '' : ''; ?>">
                     <div class="info-card-header">
                       <img src="<?php echo $featured_image_url[0];  ?>" alt="<?php echo empty($alt) ? get_the_title() : $alt; ?>" draggable="false">
                     </div>
