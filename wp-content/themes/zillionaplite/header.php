@@ -20,11 +20,16 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body class="<?php echo ((is_page('get-in-touch') || is_page('insights'))? 'insights' : ''); ?>" <?php body_class(); ?>>
 
 <?php 
 //Created Header Section 
-get_template_part('template-parts/custom','header');
+if(is_page('get-in-touch') || is_page('insights')){
+	get_template_part('template-parts/header','section2');
+}else{
+	get_template_part('template-parts/custom','header');
+}
+
 
 //Created All Page Banner
 get_template_part('template-parts/content','banner');
