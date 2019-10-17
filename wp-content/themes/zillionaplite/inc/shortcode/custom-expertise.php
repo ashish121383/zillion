@@ -13,8 +13,8 @@
             );
             $services_query = new WP_Query($args); 
             $i = 1; 
-            if(have_posts()):
-                while(have_posts()):the_post(); 
+            if($services_query->have_posts()):
+                while($services_query->have_posts()):$services_query->the_post(); 
                 $featured_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
                 $thumbnail_id    = get_post_thumbnail_id($post->ID);                    
                 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
@@ -24,11 +24,11 @@
            <div class="innerspace">
               <div class="info-card <?php echo ($i == 1) ? 'active' : ''; ?>">
                     <div class="info-card-header">
-                      <img src="<?php echo $featured_image_url;  ?>" alt="<?php echo empty($alt) ? get_the_title() : $alt; ?>" draggable="false">
+                      <img src="<?php echo $featured_image_url[0];  ?>" alt="<?php echo empty($alt) ? get_the_title() : $alt; ?>" draggable="false">
                     </div>
                     <div class="info-card-body">
                       <h5 class="card-title"><?php the_title(); ?></h5>
-                      <p><?php the_content; ?></p>
+                      <p><?php the_content(); ?></p>
                     </div>
                </div><!-- .info-card END -->
            </div>

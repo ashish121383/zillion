@@ -27,6 +27,8 @@
 get_template_part('template-parts/custom','header');
 
 //Created All Page Banner
+get_template_part('template-parts/content','banner');
+
 ?>
 
 	

@@ -39,6 +39,8 @@ define( 'DB_COLLATE', '' );
 
 define('FS_METHOD', 'direct');
 
+define( 'WPCF7_AUTOP', false ); 
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

@@ -13,23 +13,14 @@
  */
 
 get_header();
-?>
 
-	<section class="second-section <?php if('' == get_post()->post_content) echo 'space'; ?>">
-		<div class="container">
-
-		<?php
 		while ( have_posts() ) :
 			the_post();
 
 			get_template_part( 'template-parts/content', 'page' );
 
-		endwhile; // End of the loop.
-		?>
+		endwhile; // End of the loop.	
 
-	 </div><!-- #main -->
-	</section><!-- #primary -->
-
-<?php
+		get_template_part( 'template-parts/content-ready-to-talk');
 //get_sidebar();
 get_footer();

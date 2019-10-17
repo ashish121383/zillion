@@ -713,7 +713,7 @@ transform: rotateY(0deg); */
 	text-align: left;
 }
 
-.formSec input[type="text"] {
+.formSec input[type="text"],input[type="email"] {
 	border: 1px solid #00142A;
 	opacity: 1;
 	width: 100%;
@@ -723,6 +723,19 @@ transform: rotateY(0deg); */
 	outline: none;
 	height: 50px;
 }
+
+
+.formSec input[type="email"] {
+	border: 1px solid #00142A;
+	opacity: 1;
+	width: 100%;
+	display: block;
+	padding: 10px;
+	margin-bottom: 30px;
+	outline: none;
+	height: 50px;
+}
+
 
 .btn-sec{
 	background: #022A55;
@@ -1535,4 +1548,7 @@ Written by Ashish 15102019
 span#spinner-image {
     display: none;
 }
-    
+
+h1.entry-title {
+    display: none;
+}
